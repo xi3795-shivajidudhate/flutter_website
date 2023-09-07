@@ -19,6 +19,7 @@ class _HomePageState extends State<HomePage> {
   double gridAaspectRationWidth = 1;
   double gridAaspectRationHeight = 0.65;
   double appbarHeight = 50;
+  double spaceBetweenSidebarandManPage = 48;
 
   @override
   Widget build(BuildContext context) {
@@ -27,14 +28,17 @@ class _HomePageState extends State<HomePage> {
       gridViewColumCount = 3;
       gridAaspectRationHeight = 0.64;
       appbarHeight = 60;
+      spaceBetweenSidebarandManPage = 48;
     } else if (mediaWidth > 800 && mediaWidth < 1150) {
       gridViewColumCount = 2;
       gridAaspectRationHeight = 0.65;
       appbarHeight = 90;
-    } else if (mediaWidth > 480 && mediaWidth < 800) {
+      spaceBetweenSidebarandManPage = 35;
+    } else if (mediaWidth > 450 && mediaWidth < 800) {
       gridViewColumCount = 1;
       gridAaspectRationHeight = 0.65;
       appbarHeight = 150;
+      spaceBetweenSidebarandManPage = 20;
     } else if (mediaWidth < 480) {
       gridViewColumCount = 1;
       gridAaspectRationHeight = 0.60;
@@ -43,7 +47,7 @@ class _HomePageState extends State<HomePage> {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth > 500) {
+        if (constraints.maxWidth > 450) {
           return Scaffold(
             appBar: AppBar(
               toolbarHeight: appbarHeight,
@@ -67,7 +71,7 @@ class _HomePageState extends State<HomePage> {
                           flex: 2,
                           child: FilltersPage(),
                         ),
-                        const SizedBox(width: 48),
+                        SizedBox(width: spaceBetweenSidebarandManPage),
                         Expanded(
                           flex: 7,
                           child: _gridViewWidget(),
