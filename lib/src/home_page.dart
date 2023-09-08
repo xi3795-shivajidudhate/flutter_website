@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   double gridAaspectRationHeight = 0.65;
   double appbarHeight = 50;
   double spaceBetweenSidebarandManPage = 48;
+  int flexValOfRightBar = 2;
 
   @override
   Widget build(BuildContext context) {
@@ -29,6 +30,7 @@ class _HomePageState extends State<HomePage> {
       gridAaspectRationHeight = 0.64;
       appbarHeight = 60;
       spaceBetweenSidebarandManPage = 48;
+      flexValOfRightBar = 2;
     } else if (mediaWidth > 800 && mediaWidth < 1150) {
       gridViewColumCount = 2;
       gridAaspectRationHeight = 0.65;
@@ -36,10 +38,11 @@ class _HomePageState extends State<HomePage> {
       spaceBetweenSidebarandManPage = 35;
     } else if (mediaWidth > 450 && mediaWidth < 800) {
       gridViewColumCount = 1;
-      gridAaspectRationHeight = 0.65;
+      gridAaspectRationHeight = 0.55;
       appbarHeight = 150;
       spaceBetweenSidebarandManPage = 20;
-    } else if (mediaWidth < 480) {
+      flexValOfRightBar = 3;
+    } else if (mediaWidth < 450) {
       gridViewColumCount = 1;
       gridAaspectRationHeight = 0.60;
       appbarHeight = 200;
@@ -62,14 +65,32 @@ class _HomePageState extends State<HomePage> {
                   ),
                   const Divider(height: 10),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 24),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Expanded(
-                          flex: 2,
-                          child: FilltersPage(),
+                        Expanded(
+                          flex: flexValOfRightBar,
+                          child: const Wrap(
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 20),
+                                child: Text(
+                                  '80 stores',
+                                  style: TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 28,
+                                    fontFamily: 'Readex Pro',
+                                    fontWeight: FontWeight.w500,
+                                    height: 1.29,
+                                  ),
+                                ),
+                              ),
+                              FilltersPage(),
+                            ],
+                          ),
                         ),
                         SizedBox(width: spaceBetweenSidebarandManPage),
                         Expanded(
@@ -146,41 +167,40 @@ class _HomePageState extends State<HomePage> {
                             showModalBottomSheet(
                               context: context,
                               isScrollControlled: true,
-                              enableDrag: true,
                               builder: (BuildContext context) {
-                                return SingleChildScrollView(
-                                  child: Container(
+                                return FractionallySizedBox(
+                                  heightFactor: 0.85,
+                                  child: Padding(
                                     padding: const EdgeInsets.symmetric(
                                         horizontal: 16, vertical: 12),
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: <Widget>[
-                                        Flex(
-                                          direction: Axis.horizontal,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            const Text(
-                                              'Filter',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontSize: 22,
-                                                fontFamily: 'Readex Pro',
-                                                fontWeight: FontWeight.w400,
-                                                height: 1.27,
+                                    child: SingleChildScrollView(
+                                      child: Wrap(
+                                        children: <Widget>[
+                                          Flex(
+                                            direction: Axis.horizontal,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              const Text(
+                                                'Filter',
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                  fontSize: 22,
+                                                  fontFamily: 'Readex Pro',
+                                                  fontWeight: FontWeight.w400,
+                                                  height: 1.27,
+                                                ),
                                               ),
-                                            ),
-                                            IconButton(
-                                              icon: const Icon(Icons.close),
-                                              onPressed: () =>
-                                                  Navigator.pop(context),
-                                            ),
-                                          ],
-                                        ),
-                                        const FilltersPage(),
-                                      ],
+                                              IconButton(
+                                                icon: const Icon(Icons.close),
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                              ),
+                                            ],
+                                          ),
+                                          const FilltersPage()
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 );

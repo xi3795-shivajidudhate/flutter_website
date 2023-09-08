@@ -11,7 +11,7 @@ const List<Menu> menus = <Menu>[
   ),
   Menu(
     title: 'Grocery',
-    image: 'assets/images/deals.jpg',
+    image: 'assets/images/grocery.jpg',
   ),
   Menu(
     title: 'Convenience',
@@ -19,7 +19,7 @@ const List<Menu> menus = <Menu>[
   ),
   Menu(
     title: 'Pizza',
-    image: 'assets/images/deals.jpg',
+    image: 'assets/images/grocery.jpg',
   ),
   Menu(
     title: 'Alcohol',
@@ -27,7 +27,7 @@ const List<Menu> menus = <Menu>[
   ),
   Menu(
     title: 'Pharmacy',
-    image: 'assets/images/deals.jpg',
+    image: 'assets/images/grocery.jpg',
   ),
   Menu(
     title: 'Sushi',
@@ -35,7 +35,7 @@ const List<Menu> menus = <Menu>[
   ),
   Menu(
     title: 'Specialty Foods',
-    image: 'assets/images/deals.jpg',
+    image: 'assets/images/grocery.jpg',
   ),
   Menu(
     title: 'Pet Supplies',
@@ -43,7 +43,7 @@ const List<Menu> menus = <Menu>[
   ),
   Menu(
     title: 'Flowers',
-    image: 'assets/images/deals.jpg',
+    image: 'assets/images/grocery.jpg',
   ),
   Menu(
     title: 'Fast Food',

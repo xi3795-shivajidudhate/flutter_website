@@ -21,46 +21,7 @@ class FilltersPage extends StatelessWidget {
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        if (constraints.maxWidth <= 500) {
-          return SingleChildScrollView(
-            padding: EdgeInsets.all(fillterPadding),
-            scrollDirection: Axis.vertical,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ElevatedButton(
-                  onPressed: () => {},
-                  style: const ButtonStyle(
-                    backgroundColor:
-                        MaterialStatePropertyAll(Color(0xFFF1F5F9)),
-                  ),
-                  child: const Text(
-                    'Clear all',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 14,
-                      fontFamily: 'Readex Pro',
-                      fontWeight: FontWeight.w500,
-                      height: 1.43,
-                      letterSpacing: 0.10,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 16),
-                const SortExpansionTile(),
-                const SizedBox(height: 16),
-                const PriceRangeExpansionTile(),
-                const SizedBox(height: 16),
-                const FromPostmatesExpansionTile(),
-                const SizedBox(height: 16),
-                const MaxDeliveryFeeExpansionTile(),
-                const SizedBox(height: 16),
-                const DietaryExpansionTile(),
-              ],
-            ),
-          );
-        } else {
+        if (constraints.maxWidth > 500) {
           return Padding(
             padding: EdgeInsets.all(fillterPadding),
             child: SizedBox(
@@ -111,6 +72,38 @@ class FilltersPage extends StatelessWidget {
                 ],
               ),
             ),
+          );
+        } else {
+          return Wrap(
+            children: [
+              ElevatedButton(
+                onPressed: () => {},
+                style: const ButtonStyle(
+                  backgroundColor: MaterialStatePropertyAll(Color(0xFFF1F5F9)),
+                ),
+                child: const Text(
+                  'Clear all',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Readex Pro',
+                    fontWeight: FontWeight.w500,
+                    height: 1.43,
+                    letterSpacing: 0.10,
+                  ),
+                ),
+              ),
+              const SizedBox(height: 16),
+              const SortExpansionTile(),
+              const SizedBox(height: 16),
+              const PriceRangeExpansionTile(),
+              const SizedBox(height: 16),
+              const FromPostmatesExpansionTile(),
+              const SizedBox(height: 16),
+              const MaxDeliveryFeeExpansionTile(),
+              const SizedBox(height: 16),
+              const DietaryExpansionTile(),
+            ],
           );
         }
       },
